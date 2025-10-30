@@ -2,14 +2,20 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Heart, Share2 } from "lucide-react";
+import gallery1 from "@/assets/gallery-1.jpg";
+import gallery2 from "@/assets/gallery-2.jpg";
+import gallery3 from "@/assets/gallery-3.jpg";
+import gallery4 from "@/assets/gallery-4.jpg";
+import gallery5 from "@/assets/gallery-5.jpg";
+import gallery6 from "@/assets/gallery-6.jpg";
 
 const galleryImages = [
-  { id: 1, caption: "Morning vibes ☀️", likes: 124 },
-  { id: 2, caption: "Latte art love ❤️", likes: 89 },
-  { id: 3, caption: "Cozy corner 📚", likes: 156 },
-  { id: 4, caption: "Fresh pastries 🥐", likes: 203 },
-  { id: 5, caption: "Coffee break ☕", likes: 178 },
-  { id: 6, caption: "Friends & coffee 👯", likes: 145 },
+  { id: 1, caption: "Morning vibes ☀️", likes: 124, image: gallery1 },
+  { id: 2, caption: "Latte art love ❤️", likes: 89, image: gallery2 },
+  { id: 3, caption: "Cozy corner 📚", likes: 156, image: gallery3 },
+  { id: 4, caption: "Fresh pastries 🥐", likes: 203, image: gallery4 },
+  { id: 5, caption: "Coffee break ☕", likes: 178, image: gallery5 },
+  { id: 6, caption: "Friends & coffee 👯", likes: 145, image: gallery6 },
 ];
 
 const GalleryCard = ({ image, delay = 0 }: { image: typeof galleryImages[0]; delay?: number }) => {
@@ -24,8 +30,12 @@ const GalleryCard = ({ image, delay = 0 }: { image: typeof galleryImages[0]; del
       whileHover={{ y: -10 }}
       className="group relative bg-background rounded-2xl overflow-hidden shadow-lg cursor-pointer"
     >
-      {/* Placeholder gradient image */}
-      <div className="aspect-square bg-gradient-to-br from-primary via-secondary to-accent" />
+      {/* Gallery image */}
+      <img 
+        src={image.image} 
+        alt={image.caption}
+        className="w-full h-full object-cover aspect-square"
+      />
 
       {/* Overlay on hover */}
       <motion.div
